@@ -1,15 +1,30 @@
 import TodoList from './components/List/todolist.js';
 import Button from './components/Button/button.js';
 
-const todoList = new TodoList();
+let chores = ['wake up', 'breakfast'];
 
 function addChore() {
-  console.log('hello');
+  chores = [
+    'sleep',
+    ...chores
+  ];
+  console.log(chores);
+  renderTodoList();
 }
 
-console.log('hello');
-todoList.render();
-Button({
-  buttonLabel: 'Hello World',
-  onClick: addChore
-});
+const renderButton = () => {
+  return Button({
+    buttonLabel: 'Hello World',
+    onClick: addChore
+  });
+}
+
+const renderTodoList = () => {
+  return TodoList({
+    itemList: chores,
+  });
+}
+
+renderButton();
+renderTodoList();
+

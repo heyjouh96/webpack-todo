@@ -92,24 +92,43 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_List_todolist_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _components_Button_button_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 
-var todoList = new _components_List_todolist_js__WEBPACK_IMPORTED_MODULE_0__["default"](); // const addBtn = new Button({
-//   buttonLabel: 'Hello World',
-//   onClick: addChore
-// });
+
+var chores = ['wake up', 'breakfast'];
 
 function addChore() {
-  console.log('hello');
+  chores = ['sleep'].concat(_toConsumableArray(chores));
+  console.log(chores);
+  renderTodoList();
 }
 
-console.log('hello');
-todoList.render(); // addBtn.render();
+var renderButton = function renderButton() {
+  return Object(_components_Button_button_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    buttonLabel: 'Hello World',
+    onClick: addChore
+  });
+};
 
-Object(_components_Button_button_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
-  buttonLabel: 'Hello World',
-  onClick: addChore
-});
+var renderTodoList = function renderTodoList() {
+  return Object(_components_List_todolist_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    itemList: chores
+  });
+};
+
+renderButton();
+renderTodoList();
 
 /***/ }),
 /* 1 */
@@ -117,33 +136,42 @@ Object(_components_Button_button_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+// class TodoList {
+//   todoList = ['wake up', 'breakfast'];
+//   render() {
+//     console.log('list');
+//     const body = document.querySelector('body');
+//     this.todoList.map((t) => {
+//       const p = document.createElement('p');
+//       p.innerHTML = t;
+//       body.appendChild(p);
+//     });
+//   }
+// };
+var defaultProps = {
+  itemList: []
+};
+var body = document.querySelector('body');
+var wrapper = document.createElement('div');
+wrapper.id = 'list-wrapper';
+body.appendChild(wrapper);
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function TodoList() {
+  var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultProps;
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+  var render = function render() {
+    console.log('list');
+    wrapper.innerHTML = '';
+    props.itemList.map(function (t) {
+      var p = document.createElement('p');
+      p.innerHTML = t;
+      wrapper.appendChild(p);
+    });
+  };
 
-var TodoList = /*#__PURE__*/function () {
-  function TodoList() {
-    _classCallCheck(this, TodoList);
+  return render();
+}
 
-    this.todoList = ['wake up', 'breakfast'];
-  }
-
-  _createClass(TodoList, [{
-    key: "render",
-    value: function render() {
-      console.log('list');
-      this.todoList.map(function (t) {
-        return console.log(t);
-      });
-    }
-  }]);
-
-  return TodoList;
-}();
-
-;
 /* harmony default export */ __webpack_exports__["default"] = (TodoList);
 
 /***/ }),
@@ -152,19 +180,6 @@ var TodoList = /*#__PURE__*/function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-// class Button {
-//   constructor(props) {
-//     this.buttonLabel = props.buttonLabel;
-//     this.onClick = props.onClick;
-//   }
-//   render() {
-//     const body = document.querySelector('body');
-//     const btn = document.createElement('button');
-//     btn.innerHTML = this.buttonLabel;
-//     btn.addEventListener('click', this.onClick);
-//     body.appendChild(btn);
-//   }
-// }
 var defaultProps = {
   buttonLabel: 'Button',
   onClick: function onClick() {
