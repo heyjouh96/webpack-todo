@@ -91,10 +91,25 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_List_todolist_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var _components_Button_button_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
 
-var todoList = new _components_List_todolist_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
+
+var todoList = new _components_List_todolist_js__WEBPACK_IMPORTED_MODULE_0__["default"](); // const addBtn = new Button({
+//   buttonLabel: 'Hello World',
+//   onClick: addChore
+// });
+
+function addChore() {
+  console.log('hello');
+}
+
 console.log('hello');
-todoList.render();
+todoList.render(); // addBtn.render();
+
+Object(_components_Button_button_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+  buttonLabel: 'Hello World',
+  onClick: addChore
+});
 
 /***/ }),
 /* 1 */
@@ -130,6 +145,48 @@ var TodoList = /*#__PURE__*/function () {
 
 ;
 /* harmony default export */ __webpack_exports__["default"] = (TodoList);
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// class Button {
+//   constructor(props) {
+//     this.buttonLabel = props.buttonLabel;
+//     this.onClick = props.onClick;
+//   }
+//   render() {
+//     const body = document.querySelector('body');
+//     const btn = document.createElement('button');
+//     btn.innerHTML = this.buttonLabel;
+//     btn.addEventListener('click', this.onClick);
+//     body.appendChild(btn);
+//   }
+// }
+var defaultProps = {
+  buttonLabel: 'Button',
+  onClick: function onClick() {
+    return console.log('default behavior');
+  }
+};
+
+function Button() {
+  var porps = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultProps;
+
+  var render = function render() {
+    var body = document.querySelector('body');
+    var btn = document.createElement('button');
+    btn.innerHTML = porps.buttonLabel;
+    btn.addEventListener('click', porps.onClick);
+    body.appendChild(btn);
+  };
+
+  return render();
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Button);
 
 /***/ })
 /******/ ]);
