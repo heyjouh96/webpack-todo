@@ -7,11 +7,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: './src/index.js',
   output: {
-    filename: 'bundle.js',
+    filename: 'bundle.[contenthash].js',
     path: path.resolve(__dirname, './dist'),
     publicPath: ''
   },
-  mode: 'none',
+  mode: 'production',
   devServer: {
     contentBase: path.resolve(__dirname, './dist'),
     index: 'index.html',
@@ -48,7 +48,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'style.css'
+      filename: 'style.[contenthash].css'
     }),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
