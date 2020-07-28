@@ -7,11 +7,16 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: './src/index.js',
   output: {
-    filename: 'bundle.[contenthash].js',
+    filename: 'bundle.js',
     path: path.resolve(__dirname, './dist'),
     publicPath: ''
   },
   mode: 'none',
+  devServer: {
+    contentBase: path.resolve(__dirname, './dist'),
+    index: 'index.html',
+    port: 9000
+  },
   module: {
     rules: [
       {
@@ -33,18 +38,23 @@ module.exports = {
           'sass-loader'
         ]
       },
+      {
+        test: /\.hbs$/,
+        use: [
+          'handlebars-loader'
+        ]
+      }
     ]
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'style.[contenthash].css'
+      filename: 'style.css'
     }),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'To do list',
-      meta: {
-        description: 'My to do list'
-      }
+      template: 'src/index.hbs',
+      title: 'My To do list',
+      description: 'My to do list'
     })
   ]
 }
