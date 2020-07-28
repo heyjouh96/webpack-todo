@@ -180,6 +180,9 @@ function TodoList() {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _button_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony import */ var _button_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_button_scss__WEBPACK_IMPORTED_MODULE_0__);
+
 var defaultProps = {
   buttonLabel: 'Button',
   onClick: function onClick() {
@@ -193,6 +196,7 @@ function Button() {
   var render = function render() {
     var body = document.querySelector('body');
     var btn = document.createElement('button');
+    btn.classList.add('btn');
     btn.innerHTML = porps.buttonLabel;
     btn.addEventListener('click', porps.onClick);
     body.appendChild(btn);
@@ -202,6 +206,12 @@ function Button() {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Button);
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ })
 /******/ ]);
