@@ -48,9 +48,10 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: 'src/index.hbs',
       title: 'My To do list',
-      description: 'My to do list'
+      meta: {
+        description: 'My to do list'
+      }
     })
   ]
 }

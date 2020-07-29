@@ -1,5 +1,6 @@
 import TodoList from './components/List/todolist.js';
 import Button from './components/Button/button.js';
+import ButtonUI from './UI/Button/button.js';
 import testTemplate from './index.hbs';
 
 let chores = ['wake up', 'breakfast'];
@@ -34,6 +35,10 @@ document.querySelector('body').innerHTML = testTemplate({
     { name: 'Wake up' },
     { name: 'Breakfast' },
     { name: 'Run' },
-  ]
+  ],
+  button: ButtonUI({
+    buttonLabel: 'Hello World',
+    onClick: () => console.log('hello')
+  })
 });
 
